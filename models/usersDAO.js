@@ -14,4 +14,32 @@ module.exports = {
                 callback(null)  //enviamos null
         })
     },
+
+    //metodo para guardar pedido
+
+    insertClient: (client,callback)=>{
+        let sql = 'INSERT INTO cliente SET ?'
+        bd.query(sql,client,(err,data)=>{
+            if (err)
+                //Si hay error entonces la insercion no fue exitosa
+                //en vez de tronar retorno un null
+                return callback(null)
+            else
+                //Hay un data y lo retornamos
+                return callback(data)
+        })
+    },
+
+    insertClientPedidos: (pedido,callback)=>{
+        let sql = 'INSERT INTO pedido SET ?'
+        bd.query(sql,pedido,(err,data)=>{
+            if (err)
+                //Si hay error entonces la insercion no fue exitosa
+                //en vez de tronar retorno un null
+                return callback(null)
+            else
+                //Hay un data y lo retornamos
+                return callback(data)
+        })
+    },
 }

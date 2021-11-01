@@ -26,11 +26,56 @@ const userValidate = (req, res) => {
     })
 }
 
-const  signup = (req,res)=>{
-
+const  registrarClient = (req,res)=>{
+        const client={
+            Nombre: req.body.Nombre,
+            Apellidos: req.body.Apellidos,
+            Telefono: req.body.Telefono,
+        }
+        //Mandamos a llamar el metodo insertClient del modelo
+        userDAO.insertClient(client,(data)=>{
+            console.log('data==> ',data)
+            //si esta referenciado y ha sido afectado 1 fila
+            if (data && data.affectedRows ===1){
+                res.send({
+                    status:true,
+                    message: 'datos insertados exitosamente'
+                })
+            }else {
+                res.send({
+                    status: false,
+                    message: 'Ocurrio un problema al insertar los datos'
+                })
+            }
+        })
 }
 
+const registrarPedido = (req,res)=>{
+    const pedido={
+        CantidadP:req.body.CantidadP,
+        Productos:req.body.Productos,
+        Fechapedido:req.body.Fechapedido,
+        CantidadTotal:req.body.CantidadTotal
+    }
+    //Mandamos a llamar el metodo insertClient del modelo
+    userDAO.insertClientPedidos(pedido,(data)=>{
+        console.log('data==> ',data)
+        //si esta referenciado y ha sido afectado 1 fila
+        if (data && data.affectedRows ===1){
+            res.send({
+                status:true,
+                message: 'datos insertados exitosamente'
+            })
+        }else {
+            res.send({
+                status: false,
+                message: 'Ocurrio un problema al insertar los datos'
+            })
+        }
+    })
+}
 module.exports = {
     userValidate,
-    signup
+    registrarClient,
+    registrarPedido
 }
