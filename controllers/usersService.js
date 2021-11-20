@@ -4,10 +4,8 @@ const userDAO = require('../models/usersDAO')
 //  request, response
 const userValidate = (req, res) => {
     //peticion get metodo que sirve para el login
-    let User= req.body.User
-    let Password = req.body.Password
 
-    userDAO.findByUsername(req.params.User,req.params.Password,(data)=>{
+    userDAO.findByUsername(req.params.user,req.params.password,(data)=>{
         //Metodo callback retorma el valor del modelo UserDAO
 
         try{
