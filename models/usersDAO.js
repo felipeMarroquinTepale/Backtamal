@@ -30,16 +30,5 @@ module.exports = {
         })
     },
 
-    insertClientPedidos: (pedido,callback)=>{
-        let sql = 'INSERT INTO pedido SET ?'
-        bd.query(sql,pedido,(err,data)=>{
-            if (err)
-                //Si hay error entonces la insercion no fue exitosa
-                //en vez de tronar retorno un null
-                return callback(null)
-            else
-                //Hay un data y lo retornamos
-                return callback(data)
-        })
-    },
+
 }

@@ -48,32 +48,8 @@ const  registrarClient = (req,res)=>{
         })
 }
 
-const registrarPedido = (req,res)=>{
-    const pedido={
-        CantidadP:req.body.CantidadP,
-        Productos:req.body.Productos,
-        Fechapedido:req.body.Fechapedido,
-        CantidadTotal:req.body.CantidadTotal
-    }
-    //Mandamos a llamar el metodo insertClient del modelo
-    userDAO.insertClientPedidos(pedido,(data)=>{
-        console.log('data==> ',data)
-        //si esta referenciado y ha sido afectado 1 fila
-        if (data && data.affectedRows ===1){
-            res.send({
-                status:true,
-                message: 'datos insertados exitosamente'
-            })
-        }else {
-            res.send({
-                status: false,
-                message: 'Ocurrio un problema al insertar los datos'
-            })
-        }
-    })
-}
+
 module.exports = {
     userValidate,
-    registrarClient,
-    registrarPedido
+    registrarClient
 }
