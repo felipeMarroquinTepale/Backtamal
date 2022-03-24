@@ -13,7 +13,7 @@ const insertPedidos = (req, res) =>{
     }
     //Mandamos a llamar el metodo insertClient del modelo
     productDao.insertPedidos(pedido,(data)=>{
-        console.log('data==> ',data)
+        //console.log('data==> ',data)
         //si esta referenciado y ha sido afectado 1 fila
         if (data && data.affectedRows ===1){
             res.send({
